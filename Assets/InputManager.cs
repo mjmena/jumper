@@ -13,6 +13,10 @@ public class InputManager : MonoBehaviour {
             player.Jump();
         }
 
+        if (Input.GetKeyDown(KeyCode.C)) {
+            cam.Snap();
+        }
+
         player.SetDirection(cam.GetCardinalRotation() * input_direction);
     }
 }
