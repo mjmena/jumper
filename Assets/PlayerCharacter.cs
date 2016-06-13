@@ -9,6 +9,9 @@ public class PlayerCharacter : MonoBehaviour {
     public float gravity;
     public Vector3 terminal_velocity;
 
+    private static float current_health = 3;
+    public float max_health; 
+
     private bool hasJumped = false;
 
     void Awake()
@@ -55,5 +58,25 @@ public class PlayerCharacter : MonoBehaviour {
     public bool IsMoving()
     {
         return direction != Vector3.zero;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        current_health -= damage;
+        if(current_health < 0)
+        {
+            Debug.Log("died");
+            current_health = max_health; 
+        }
+    }
+
+    public float CurrentHealth
+    {
+        get { return current_health; }
+    }
+
+    public float MaxHealth
+    {
+        get { return max_health; }
     }
 }
